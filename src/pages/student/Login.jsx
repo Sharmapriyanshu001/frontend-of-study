@@ -32,7 +32,7 @@ function Login() {
         navigate('/dashboard');
       }
     } catch (err) {
-      const errorMsg = err.response?.data?.message || 'Login failed. Please check your credentials.';
+      const errorMsg = err.response?.data?.message || 'Network Error: Backend API is not reachable from this device. Please deploy backend.';
       setError(errorMsg);
       toast.error(errorMsg);
     } finally {
