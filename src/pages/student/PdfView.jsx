@@ -28,7 +28,11 @@ function PdfView() {
   if (!unit) return <div className="p-8 text-red-600 font-bold">Document not found.</div>;
 
   const cleanPdfPath = unit.pdfUrl.startsWith('/') ? unit.pdfUrl.substring(1) : unit.pdfUrl;
-  const pdfUrl = `http://localhost:5000/${cleanPdfPath}`;
+  const getBaseUrl = () => {
+    const baseURL = api.defaults.baseURL || 'http://localhost:5000/api';
+    return baseURL.replace('/api', '');
+  };
+  const pdfUrl = `${getBaseUrl()}/${cleanPdfPath}`;
 
   const handleDownload = async (e) => {
     e.preventDefault();
